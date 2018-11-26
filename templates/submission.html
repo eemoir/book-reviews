@@ -1,0 +1,18 @@
+{% extends "template.html" %}
+
+{% block title %} 
+Submission successful
+{% endblock %}
+
+{% block header %}
+<div class="logout-bar">
+	<p>Hello, {{ username }}!</p>
+	<a href="{{ url_for('logout') }}">Log Out</a>
+</div>
+{% endblock %}
+
+{% block body %}
+<p>Your review of {{book}} has been successfully submitted.</p>
+
+<a href="{{ url_for('search')}}">Return to search page</a>
+{% endblock %}

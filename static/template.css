@@ -1,0 +1,110 @@
+.star {
+	width: 30px;
+	height: 30px
+}
+
+html {
+	font-family: 'Noto Serif', serif;
+}
+
+header {
+	width: 100%;
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	align-items: flex-end;
+	border-bottom: 5px solid #a2c3f9;
+	padding-top: 40px;
+}
+
+#header-title {
+	text-align: left;
+	font-size: 300%;
+}
+
+#header-info {
+	text-align: right;
+	font-size: 100%;
+}
+
+.info-subtitle {
+	margin: 0;
+}
+
+body {
+	text-align: center;
+	margin: 0;
+}
+
+.logout-bar {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	align-items: flex-start;
+	margin-top: 5px;
+}
+
+#body-div {
+	background-color: white;
+	width: 70%;
+	margin: auto;
+	border: solid black 2px;
+	border-radius: 5px;
+	padding: 15px 5px 15px 5px;
+}
+
+#search-form {
+	display: table;
+	margin: auto;
+}
+
+.form-row {
+  display: table-row; 
+}
+
+.form-label {
+  display: table-cell;
+  align-items: start; 
+}
+
+.input {
+  display: table-cell;
+  vertical-align: top;
+  margin: 0px 0px 5px 5px; 
+}
+
+.error {
+	color: red;
+	font-weight: bold;
+}
+
+form {
+	padding: 5px 5px 5px 5px;
+}
+
+button {
+	margin-top: 15px;
+}
+
+.result-row {
+	display: flex;
+	flex-direction: row;
+}
+
+.result-title {
+	font-weight: bold;
+}
+
+.book-info {
+	text-align: left;
+}
+
+p {
+	margin: 0;
+}
+
+ul {
+	text-align: left;
+	width: 30%;
+	margin: auto;
+}

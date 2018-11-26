@@ -1,0 +1,40 @@
+{% extends "template.html" %}
+
+{% block title %} 
+Search
+{% endblock %}
+
+{% block header %}
+<div class="logout-bar">
+	<p>Hello, {{ username }}!</p>
+	<a href="{{ url_for('logout') }}">Log Out</a>
+</div>
+<h1>Search for books</h1>
+{% endblock %}
+
+{% block body %}
+<form action="{{ url_for('search') }}" method="POST">
+	<div id="search-form">
+		<div class='form-row'>
+			<p class="form-label">Search by Title:</p>
+			<input class="input" type="text" name="title" placeholder="Enter Title" />
+		</div>
+		<br/>
+		<div class='form-row'>
+			<p class="form-label">Search by Author:</p>
+			<input class="input" type="text" name="author" placeholder="Enter Author" />
+		</div>
+		<br/>
+		<div class='form-row'>
+			<p class="form-label">Search by ISBN:</p>
+			<input class="input" type="text" name="ISBN" placeholder="Enter ISBN" />
+		</div>
+		<br/>
+	</div>
+{% if error_message %}
+<p class="error">{{ error_message }}</p>
+{% endif %}
+<button class='btn-primary' type="submit">Search</button>
+</form>
+
+{% endblock %}

@@ -1,0 +1,87 @@
+{% extends "template.html" %}
+
+{% block title %} 
+Book Details
+{% endblock %}
+
+{% block header %}
+<div class="logout-bar">
+	<p>Hello, {{ username }}!</p>
+	<a href="{{ url_for('logout') }}">Log Out</a>
+</div>
+{% endblock %}
+
+{% block body %}
+<h1>{{ book }}</h1>
+<h3>{{ author }}</h3>
+<div class='book-info'>
+<p><b>Publication year: </b>{{ year }}</p>
+<p><b>ISBN: </b>{{ ISBN }}</p>
+<p><b>GoodReads Rating: </b>{{ goodreads }} out of {{ number }} ratings</p>
+<hr/>
+{% if my_review %}
+
+	<p><b>My review:</b></p>
+	<p>{{ my_review }}</p>
+	<p><b>My rating:</b></p>
+	{% for x in range(my_rating) %}
+		<img class='star' src="{{ url_for('static', filename='gold_star.png')}}" alt='gold_star'/>
+	{% endfor %}
+
+	{% if not all_reviews %}
+	
+	<hr/>
+	<p>No other users have reviewed this book.</p>
+
+	{% endif %}
+{% else %}
+
+	<form id="review-form" action="{{ url_for('details') }}" method="POST">
+		<p>My review:</p>
+		<textarea rows="6" cols="70" name="text" id="text" maxlength="1000"></textarea>
+		<p id="review-error" class="error"></p>
+		<p>My rating:</p>
+		<img class='star rating-star' id="one_star" src="{{ url_for('static', filename='outline_star.png')}}" alt='1'/>
+		<img class='star rating-star' id="two_star" src="{{ url_for('static', filename='outline_star.png')}}" alt='2'/>
+		<img class='star rating-star' id="three_star" src="{{ url_for('static', filename='outline_star.png')}}" alt='3'/>
+		<img class='star rating-star' id="four_star"src="{{ url_for('static', filename='outline_star.png')}}" alt='4'/>
+		<img class='star rating-star ' id="five_star" src="{{ url_for('static', filename='outline_star.png')}}" alt='5'/>
+		<input type='hidden' id="rating" name="rating" value="0"/>
+		<br/>
+		<p id="rating-error" class="error"></p>
+		<button type="submit" class="btn btn-primary">Submit review</button>
+	</form>
+
+<hr/>
+
+{% endif %}
+
+{% if all_reviews %}
+
+	<h4>Other user reviews:</h4>
+
+	{% for review in all_reviews %}
+
+		<p>{{ review['user_name'] }}'s review:</p>
+		<p>{{ review['text']}}</p>
+
+		<p>{{ review['user_name'] }}'s rating:</p>
+		{% for x in range(review['rating']) %}
+			<img class='star' src="{{ url_for('static', filename='gold_star.png')}}" alt='gold_star'/>
+		{% endfor %}
+
+	{% endfor %}
+
+{% else %}
+
+{% if not my_review %}
+
+<p>No other users have reviewed this book. Be the first!</p>
+
+{% endif %}
+
+{% endif %}
+
+
+</div>
+{% endblock %}

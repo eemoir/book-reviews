@@ -1,0 +1,39 @@
+{% extends "template.html" %}
+
+{% block title %} 
+Results
+{% endblock %}
+
+{% block header %}
+<div class="logout-bar">
+	<p>Hello, {{ username }}!</p>
+	<a href="{{ url_for('logout') }}">Log Out</a>
+</div>
+<h1>Results</h1>
+{% endblock %}
+
+{% block body %}
+
+{% if author_results %} 
+
+{% for author in author_results%}
+
+<div class="book-info">
+	<a href="{{ url_for('author', author=author)}}">{{ author }}</a>
+</div>
+<br/>
+
+{% endfor %}
+
+{% else %}
+
+{% for result in results %} 
+
+<a href="{{ url_for('details', book=result[2], author=result[3], ISBN=result[1], year=result[4])}}"><div class='result-row'><p class="result-title">{{ result[2] }}</p><p>, {{ result[3] }}</p></div></a>
+
+{% endfor %}
+
+{% endif %}
+
+<a href="{{ url_for('search') }}">Search again</a>
+{% endblock %}

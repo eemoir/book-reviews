@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="{{ url_for('static', filename='template.css') }}">
+    <!--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">-->
+    <link href="https://fonts.googleapis.com/css?family=Noto+Serif" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="{{ url_for('static', filename='scripts.js') }}"></script>
+    <!--<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>-->
+    <title>{% block title %} {% endblock %}</title>
+  </head>
+  
+  <body>
+
+  	<header>
+  	<div id="header-title">My Book Reviews App</div>
+  	<div id="header-info"><p class="info-subtitle">A Web Development project by Erin Moir</p>
+  		<p class="info-subtitle">Created using Flask, Python, jQuery, HTML, CSS, SQLAlchemy and passlib</p>
+  	</div>
+  	</header>
+
+  	<div class="container-fluid">
+  		{% block header %} {% endblock %}
+
+  		<div id="body-div">{% block body %} {% endblock %} </div>
+
+  	</div>
+
+  </body>
+</html>
